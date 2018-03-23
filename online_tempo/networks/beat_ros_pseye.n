@@ -1,0 +1,57 @@
+#!/usr/bin/env batchflow
+<?xml version="1.0"?>
+<Document>
+  <Network type="subnet" name="MAIN">
+    <Node name="node_LOOP_1" type="LOOP" x="450" y="190">
+      <Parameter name="LENGTH" type="int" value="512" description="subnet_param"/>
+      <Parameter name="ADVANCE" type="int" value="160" description="subnet_param"/>
+      <Parameter name="SAMPLING_RATE" type="int" value="16000" description="subnet_param"/>
+    </Node>
+    <Node name="node_RosNodeGenerator_1" type="RosNodeGenerator" x="710" y="220">
+      <Parameter name="NODE_NAME" type="string" value="HARK_MASTER_NODE" description="Node name for ROS"/>
+    </Node>
+    <NetOutput name="TEMPO" node="node_LOOP_1" terminal="TEMPO" object_type="any" description="Dynamic"/>
+    <NetOutput name="VALUE" node="node_RosNodeGenerator_1" terminal="VALUE" object_type="int" description="int parameter"/>
+    <NetOutput name="OUTPUT" node="node_LOOP_1" terminal="OUTPUT" object_type="any" description="Dynamic"/>
+  </Network>
+  <Network type="iterator" name="LOOP">
+    <Node name="node_AudioStreamFromMic_1" type="AudioStreamFromMic" x="450" y="200">
+      <Parameter name="LENGTH" type="subnet_param" value="LENGTH" description="The frame length of each channel (in samples) [default: 512]."/>
+      <Parameter name="ADVANCE" type="subnet_param" value="ADVANCE" description="The shift length beween adjacent frames (in samples)[default: 160]."/>
+      <Parameter name="CHANNEL_COUNT" type="int" value="4" description="The number of channels."/>
+      <Parameter name="SAMPLING_RATE" type="subnet_param" value="SAMPLING_RATE" description="Sampling rate (Hz) [default: 16000]."/>
+      <Parameter name="DEVICETYPE" type="string" value="ALSA" description="Device type [default: WS]."/>
+      <Parameter name="GAIN" type="string" value="0dB" description="capture gain (dB)  [default: 0dB]."/>
+      <Parameter name="DEVICE" type="string" value="plughw:2,0" description="Device name or IP address [default: 127.0.0.1]"/>
+    </Node>
+    <Node name="node_BeatTracker_1" type="BeatTracker" x="760" y="190">
+      <Parameter name="RELIABILITY-THRESHOLD" type="float" value="0.1" description="The threshold for the beat detection."/>
+      <Parameter name="ADVANCE" type="subnet_param" value="ADVANCE" description="The shift length beween adjacent frames (in samples)[default: 160]."/>
+      <Parameter name="SAMPLING_RATE" type="subnet_param" value="SAMPLING_RATE" description="sampling rate of sound data."/>
+      <Parameter name="MAX_BPM" type="int" value="150" description="Maximum BPM."/>
+      <Parameter name="MIN_BPM" type="int" value="60" description="Minimum BPM."/>
+      <Parameter name="VECTOR_FLAG" type="bool" value="false" description="Output vectors or not."/>
+      <Parameter name="LOG_FLAG" type="bool" value="false" description="Log or not."/>
+    </Node>
+    <Node name="node_MultiFFT_1" type="MultiFFT" x="640" y="370">
+      <Parameter name="LENGTH" type="subnet_param" value="LENGTH" description="FFT length in sample. [default: 512]"/>
+      <Parameter name="WINDOW" type="string" value="HAMMING" description="A window function for FFT. WINDOW should be CONJ, HAMMING, RECTANGLE, or HANNING. [default: CONJ]"/>
+      <Parameter name="WINDOW_LENGTH" type="int" value="512" description="Window length of the window function. [default: 512]"/>
+    </Node>
+    <Node name="node_RosStdMsgsPublisher_1" type="RosStdMsgsPublisher" x="1080" y="220">
+      <Parameter name="ENABLE_DEBUG" type="bool" value="false" description="Set to true to print debug messages."/>
+      <Parameter name="ROS_MESSAGE_TYPE" type="string" value="Float32" description="Preferred ROS message type when publishing. If the type is not matched to the input, the input will not be published."/>
+      <Parameter name="TOPIC_NAME" type="string" value="HarkStdMsgs" description="Published topic name for ROS (The message type can be defined by ROS_MESSAGE_TYPE.)"/>
+      <Parameter name="BUFFER_NUM" type="int" value="100" description="Buffer size for a ROS published message"/>
+      <Parameter name="ROS_LOOP_RATE" type="float" value="100000" description="This allows you to specify a frequency that you would like to loop at [Hz]. Keep this value large. (If ROS interval is shorter than HARK interval, ROS interval is overwritten.)"/>
+      <Parameter name="MAX_FREQUENCY" type="float" value="-1" description="Frequency not to be exceded by the messages in the ROS topic, in Hz. Use -1 for unlimited. Warning - This will cause packet loss if the HARK frame rate is higher than the frequency set here."/>
+    </Node>
+    <Link from="node_AudioStreamFromMic_1" output="AUDIO" to="node_BeatTracker_1" input="AUDIO"/>
+    <Link from="node_AudioStreamFromMic_1" output="AUDIO" to="node_MultiFFT_1" input="INPUT"/>
+    <Link from="node_MultiFFT_1" output="OUTPUT" to="node_BeatTracker_1" input="FFTAUDIO"/>
+    <Link from="node_BeatTracker_1" output="TEMPO" to="node_RosStdMsgsPublisher_1" input="INPUT"/>
+    <NetOutput name="TEMPO" node="node_BeatTracker_1" terminal="TEMPO" object_type="float" description="beat tempo"/>
+    <NetOutput name="OUTPUT" node="node_RosStdMsgsPublisher_1" terminal="OUTPUT" object_type="ObjectRef" description="This is a dummy output. It has no purpose other than activating this node."/>
+    <NetCondition name="CONDITION" node="node_AudioStreamFromMic_1" terminal="NOT_EOF"/>
+  </Network>
+</Document>

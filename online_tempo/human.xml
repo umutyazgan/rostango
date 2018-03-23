@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<robot name="puppet">
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <sphere radius="0.01"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="hip">
+    <visual>
+      <geometry>  
+        <cylinder length="0.204" radius="0.05"/>
+     </geometry>
+      <origin rpy="1.57075 0 0" xyz="0 0 0" />
+    </visual>
+  </link>
+
+<!-- start of right leg geometry-->
+  <link name="right_tigh">
+    <visual>
+      <geometry>
+        <cylinder length="0.43" radius="0.05"/>
+      </geometry>
+    <material name="teal">
+      <color rgba="0 .5 .5 1"/>
+    </material>
+      <origin rpy="0 0 0" xyz="0 0 -0.215"/>    
+  </visual>
+  </link>
+
+  <link name="right_leg">
+    <visual>
+      <geometry>
+        <cylinder length="0.43" radius="0.05"/>
+      </geometry>
+      <material name="teal"/>
+      <origin rpy="0 0 0" xyz="0 0 -0.215"/>    
+   </visual>
+  </link>
+
+  <link name="right_foot">
+    <visual>
+      <geometry>
+        <box size="0.15 0.1 0.05"/>
+      </geometry>
+      <material name="teal"/>
+      <origin rpy="0 0 0" xyz="0.075 0 -0.025"/>    
+   </visual>
+  </link>
+<!-- end of right leg geometry -->
+<!-- start of left leg geometry -->
+  <link name="left_tigh">
+    <visual>
+      <geometry>
+        <cylinder length="0.43" radius="0.05"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 -0.215"/>    
+  </visual>
+  </link>
+
+  <link name="left_leg">
+    <visual>
+      <geometry>
+        <cylinder length="0.43" radius="0.05"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 -0.215"/>    
+   </visual>
+  </link>
+
+  <link name="left_foot">
+    <visual>
+      <geometry>
+        <box size="0.15 0.1 0.05"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0.075 0 -0.025"/>    
+   </visual>
+  </link>
+<!-- end of left leg geometry -->
+
+<!-- start of abs -->
+
+
+  <joint name="base_to_hip" type="continuous">
+    <parent link="base_link" />
+    <child link="hip" />
+    <origin xyz="0 0 0.90"/>
+  </joint>
+  <!-- right leg joints -->
+  
+  <joint name="hip_to_right_tigh" type="continuous">
+    <parent link="hip"/>
+    <child link="right_tigh"/>
+    <origin xyz="0 -0.1 0"/>
+  </joint>
+
+  <joint name="right_tigh_to_right_leg" type="continuous">
+    <parent link="right_tigh" />
+    <child link="right_leg"/>
+    <origin xyz="0 0 -0.45"/>
+   </joint>   
+
+  <joint name="right_leg_to_foot" type="continuous">
+    <parent link="right_leg"/>
+    <child link="right_foot"/>
+    <origin xyz="0 0 -0.45"/>
+  </joint> 
+  <!-- left leg joints -->
+   <joint name="hip_to_left_tigh" type="continuous">
+    <parent link="hip"/>
+    <child link="left_tigh"/>
+    <origin xyz="0 0.1 0"/>
+  </joint>
+
+  <joint name="left_tigh_to_left_leg" type="continuous">
+    <parent link="left_tigh" />
+    <child link="left_leg"/>
+    <origin xyz="0 0 -0.45"/>
+   </joint>   
+
+  <joint name="left_leg_to_foot" type="continuous">
+    <parent link="left_leg"/>
+    <child link="left_foot"/>
+    <origin xyz="0 0 -0.45"/>
+  </joint> 
+
+ 
+</robot>
