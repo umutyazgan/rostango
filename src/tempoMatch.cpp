@@ -17,8 +17,8 @@
 #include "std_msgs/Float32MultiArray.h"
 
 
-#include <online_tempo/frame_message.h>
-#include <online_tempo/imitated_tempo_message.h>
+#include <rostango/frame_message.h>
+#include <rostango/imitated_tempo_message.h>
 //#include <message_filters/subscriber.h>
 //#include <message_filters/time_synchronizer.h>
 
@@ -32,31 +32,31 @@ static float currentTempo = -1;
 static bool harkSignalReady = false;
 
 
-void harkBPMSignal(const std_msgs::Float32MultiArray::ConstPtr& msg)
-{
-  /*
-  if (msg->data != 0){
-    currentTempo = msg->data;
-    std::cout << "Current Tempo is: " << currentTempo << std::endl;
-    harkSignalReady = true;
-  }
-  */
-  if(msg->data[0] != 0){ //if message is reliable enough
-//      std::cout << "data[0]: " << msg->data[0] << "  data[1]: " << msg->data[1] << endl;
-      currentTempo = msg->data[0];
-    //  std::cout << "Tempo found: " << msg->data[0] << std::endl;
-      harkSignalReady = true;
-  }
-}
-    harkSignalReady = false;
-
-//void imitated_tempo_callback(const online_tempo::imitated_tempo_message::ConstPtr& msg){
-//    currentTempo = msg->tempo;
+//void harkBPMSignal(const std_msgs::Float32MultiArray::ConstPtr& msg)
+//{
+//  /*
+//  if (msg->data != 0){
+//    currentTempo = msg->data;
+//    std::cout << "Current Tempo is: " << currentTempo << std::endl;
 //    harkSignalReady = true;
-////    std::cout << "currentTempo: "<< currentTempo << endl;
+//  }
+//  */
+//  if(msg->data[0] != 0){ //if message is reliable enough
+////      std::cout << "data[0]: " << msg->data[0] << "  data[1]: " << msg->data[1] << endl;
+//      currentTempo = msg->data[0];
+//    //  std::cout << "Tempo found: " << msg->data[0] << std::endl;
+//      harkSignalReady = true;
+//  }
 //}
+////    harkSignalReady = false;
 
-//void callback(const online_tempo::imitated_tempo_message::ConstPtr& imit_msg, 
+void imitated_tempo_callback(const rostango::imitated_tempo_message::ConstPtr& msg){
+    currentTempo = msg->tempo;
+    harkSignalReady = true;
+//    std::cout << "currentTempo: "<< currentTempo << endl;
+}
+
+//void callback(const rostango::imitated_tempo_message::ConstPtr& imit_msg, 
 //	      const std_msgs::Float32MultiArray::ConstPtr& hark_msg){
 //    if(hark_msg->data[0] != 0){
 //        currentTempo = imit_msg->tempo;
@@ -78,7 +78,7 @@ int main(int argc, char** argv){
   vector<int> moveStart;
   vector<int> moveEnd;
   int moveCount = 0;
-  string fullPath = "/home/anil/catkin_ws/src/online_tempo/mocap_data/library/move_locations/mala_vida/move_locations.txt" ;
+  string fullPath = "/home/anil/catkin_ws/src/rostango/mocap_data/library/move_locations/mala_vida/move_locations.txt" ;
   ifstream move_locations(fullPath.c_str());  
   if(move_locations.is_open()){
     while(move_locations.good()){
@@ -122,8 +122,8 @@ string primitiveName;
 
   ros::init(argc, argv, "hark");
   ros::NodeHandle brd;
-  ros::NodeHandle hrk;
-//  ros::NodeHandle imit;
+ // ros::NodeHandle hrk;
+  ros::NodeHandle imit;
 
   //Movement demo("mala_vida");
   
@@ -313,23 +313,23 @@ string primitiveName;
   inter5.broadcast();
 
 */
-online_tempo::frame_message f_m; 
-//online_tempo::frame_message f_ms[30]; 
+rostango::frame_message f_m; 
+//rostango::frame_message f_ms[30]; 
 
-//online_tempo::frame_message_burst f_m_b;
-
-
+//rostango::frame_message_burst f_m_b;
 
 
 
-ros::Subscriber sub = hrk.subscribe("/HarkStdMsgs", 1000, harkBPMSignal);
 
-//ros::Subscriber sub = imit.subscribe("imitated_tempo", 1000, imitated_tempo_callback);
-//message_filters::Subscriber<online_tempo::imitated_tempo_message> imit_sub(imit, "imitated_tempo", 1000);
+
+//ros::Subscriber sub = hrk.subscribe("/HarkStdMsgs", 1000, harkBPMSignal);
+
+ros::Subscriber sub = imit.subscribe("imitated_tempo", 1000, imitated_tempo_callback);
+//message_filters::Subscriber<rostango::imitated_tempo_message> imit_sub(imit, "imitated_tempo", 1000);
 //message_filters::Subscriber<std_msgs::Float32MultiArray> hark_sub(hrk, "/HarkStdMsgs", 1000);
-//message_filters::TimeSynchronizer<online_tempo::imitated_tempo_message, std_msgs::Float32MultiArray> sync(imit_sub,hark_sub,10000);
+//message_filters::TimeSynchronizer<rostango::imitated_tempo_message, std_msgs::Float32MultiArray> sync(imit_sub,hark_sub,10000);
 //sync.registerCallback(boost::bind(&callback, _1, _2));
-ros::Publisher tempoMatch_pub = brd.advertise<online_tempo::frame_message>("broadcaster", 10000);
+ros::Publisher tempoMatch_pub = brd.advertise<rostango::frame_message>("broadcaster", 10000);
 ros::Rate send_rate(30);
 
 

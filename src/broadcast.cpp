@@ -15,12 +15,12 @@
 #include "std_msgs/Float32.h"
 #include <sstream>
 #include <time.h>
-#include <online_tempo/joint_message.h>
-#include <online_tempo/frame_message.h>
-#include <online_tempo/frame_message_burst.h>
-#include <online_tempo/scale_and_cast.h>
+#include <rostango/joint_message.h>
+#include <rostango/frame_message.h>
+#include <rostango/frame_message_burst.h>
+#include <rostango/scale_and_cast.h>
 #include "headers/Movement.h"
-#include <online_tempo/imitated_tempo_message.h>
+#include <rostango/imitated_tempo_message.h>
 
 
 #define NCOUNT 22
@@ -32,7 +32,7 @@ using namespace std;
 
 static Frame frm; 
 static float incomingTempo;
-void broadcast(const online_tempo::frame_message::ConstPtr& msg){
+void broadcast(const rostango::frame_message::ConstPtr& msg){
   
   //cout << "creating Primative: " << msg->primNumber << endl;
   //Movement* m_ptr = new Movement(msg->moveName, msg->primNumber);
@@ -65,7 +65,7 @@ void broadcast(const online_tempo::frame_message::ConstPtr& msg){
   
 }
 
-//void get_imit_tempo(const online_tempo::imitated_tempo_message::ConstPtr& msg){
+//void get_imit_tempo(const rostango::imitated_tempo_message::ConstPtr& msg){
 //    incomingTempo = msg->tempo;
 //}
 

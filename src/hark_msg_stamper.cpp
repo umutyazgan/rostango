@@ -15,7 +15,7 @@ int main(int argc, char **argv){
     ros::Rate sleep_rate(30);
     while (ros::ok()){
         sleep_rate.sleep();
-	online_tempo::stamped_hark_message msg;
+	rostango::stamped_hark_message msg;
 	msg.tempo
 	// çekilen değerleri headerlı mesaja yaz
 	// publish

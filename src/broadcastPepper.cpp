@@ -15,10 +15,10 @@
 #include "std_msgs/Float32.h"
 #include <sstream>
 #include <time.h>
-#include <online_tempo/joint_message.h>
-#include <online_tempo/frame_message.h>
-#include <online_tempo/frame_message_burst.h>
-#include <online_tempo/scale_and_cast.h>
+#include <rostango/joint_message.h>
+#include <rostango/frame_message.h>
+#include <rostango/frame_message_burst.h>
+#include <rostango/scale_and_cast.h>
 #include "headers/Movement.h"
 
 
@@ -31,7 +31,7 @@ using namespace std;
 
 static Frame frm; 
 static float incomingTempo;
-void broadcast(const online_tempo::frame_message::ConstPtr& msg){
+void broadcast(const rostango::frame_message::ConstPtr& msg){
   
   //cout << "creating Primative: " << msg->primNumber << endl;
   //Movement* m_ptr = new Movement(msg->moveName, msg->primNumber);

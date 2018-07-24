@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(online_tempo)
+project(rostango)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -195,8 +195,8 @@ target_link_libraries(broadcast ${catkin_LIBRARIES})
 
 add_executable(imitated_tempo_publisher src/imitated_tempo_publisher.cpp)
 target_link_libraries(imitated_tempo_publisher ${catkin_LIBRARIES})
-add_dependencies(imitated_tempo_publisher online_tempo_generate_messages_cpp)
+add_dependencies(imitated_tempo_publisher rostango_generate_messages_cpp)
 
 add_executable(imitated_tempo_input src/imitated_tempo_input.cpp)
 target_link_libraries(imitated_tempo_input ${catkin_LIBRARIES})
-add_dependencies(imitated_tempo_input online_tempo_generate_messages_cpp)
+add_dependencies(imitated_tempo_input rostango_generate_messages_cpp)

@@ -33,7 +33,7 @@
   <link name="hip_yaw">
         <visual>
       <geometry>  
-        <mesh filename="package://online_tempo/models/humanMeshed/meshes/pelvis.dae" scale="0.06 0.06 0.06"/>
+        <mesh filename="package://rostango/models/humanMeshed/meshes/pelvis.dae" scale="0.06 0.06 0.06"/>
      </geometry>
       <origin rpy="0 0 1.57075" xyz="0 0 -0.96"/>   
     </visual>
@@ -76,7 +76,7 @@
 <link name="right_thigh_yaw">
   <visual>
     <geometry>
-      <mesh filename="package://online_tempo/models/humanMeshed/meshes/rightThigh.dae" scale="0.06 0.06 0.06"/>
+      <mesh filename="package://rostango/models/humanMeshed/meshes/rightThigh.dae" scale="0.06 0.06 0.06"/>
     </geometry>      
     <origin rpy="0 0 1.57075" xyz="0 0.0875 -0.8725"/>  
   </visual>
@@ -111,7 +111,7 @@
 <link name="right_knee_yaw">
   <visual>
     <geometry>
-      <mesh filename="package://online_tempo/models/humanMeshed/meshes/rightShin.dae" scale="0.06 0.06 0.06"/>
+      <mesh filename="package://rostango/models/humanMeshed/meshes/rightShin.dae" scale="0.06 0.06 0.06"/>
     </geometry>      
     <origin rpy="0 0 1.57075" xyz="0.05 0.0675 -0.53"/>    
   </visual>
@@ -146,7 +146,7 @@
 <link name="right_foot_yaw">
   <visual>
     <geometry>
-      <mesh filename="package://online_tempo/models/humanMeshed/meshes/rightFoot.dae" scale="0.06 0.06 0.06"/>
+      <mesh filename="package://rostango/models/humanMeshed/meshes/rightFoot.dae" scale="0.06 0.06 0.06"/>
     </geometry>
     <origin rpy="0 0 1.57075" xyz="0.07375 0.055 -0.1075"/>    
    </visual>
@@ -213,7 +213,7 @@
 <link name="left_thigh_yaw">
   <visual>
     <geometry>
-      <mesh filename="package://online_tempo/models/humanMeshed/meshes/leftThigh.dae" scale="0.06 0.06 0.06"/>
+      <mesh filename="package://rostango/models/humanMeshed/meshes/leftThigh.dae" scale="0.06 0.06 0.06"/>
     </geometry>      
     <origin rpy="0 0 1.57075" xyz="0 -0.0875 -0.8725"/>    
   </visual>
@@ -249,7 +249,7 @@
 <link name="left_knee_yaw">
   <visual>
     <geometry>
-      <mesh filename="package://online_tempo/models/humanMeshed/meshes/leftShin.dae" scale="0.06 0.06 0.06"/>
+      <mesh filename="package://rostango/models/humanMeshed/meshes/leftShin.dae" scale="0.06 0.06 0.06"/>
     </geometry>      
     <origin rpy="0 0 1.57075" xyz="0.05 -0.0675 -0.53"/>   
   </visual>
@@ -285,7 +285,7 @@
 <link name="left_foot_yaw">
   <visual>
     <geometry>
-      <mesh filename="package://online_tempo/models/humanMeshed/meshes/leftFoot.dae" scale="0.06 0.06 0.06"/>
+      <mesh filename="package://rostango/models/humanMeshed/meshes/leftFoot.dae" scale="0.06 0.06 0.06"/>
     </geometry>
     <origin rpy="0 0 1.57075" xyz="0.07375 -0.055 -0.1075"/>    
    </visual>
@@ -351,7 +351,7 @@
 <link name="lower_spine_yaw">
   <visual>
     <geometry>
-              <mesh filename="package://online_tempo/models/humanMeshed/meshes/abdomen.dae" scale="0.06 0.06 0.06"/>
+              <mesh filename="package://rostango/models/humanMeshed/meshes/abdomen.dae" scale="0.06 0.06 0.06"/>
     </geometry>
     <origin rpy="0 0 1.57075" xyz="-0.005 0 -1"/>    
   </visual>
@@ -425,7 +425,7 @@
 <link name="chest_yaw">
   <visual>
     <geometry>
-      <mesh filename="package://online_tempo/models/humanMeshed/meshes/chest.dae" scale="0.06 0.06 0.06"/>
+      <mesh filename="package://rostango/models/humanMeshed/meshes/chest.dae" scale="0.06 0.06 0.06"/>
     </geometry>
     <origin rpy="0 0 1.57075" xyz="0 0 -1.2"/>    
   </visual>
@@ -460,7 +460,7 @@
 <link name="left_clavicle_yaw">
   <visual>
     <geometry>
-    <mesh filename="package://online_tempo/models/humanMeshed/meshes/leftClavicle.dae" scale="0.06 0.06 0.06"/>
+    <mesh filename="package://rostango/models/humanMeshed/meshes/leftClavicle.dae" scale="0.06 0.06 0.06"/>
     </geometry>
     <origin rpy="0 0 1.57075" xyz="0.04 0 -1.4"/>
   </visual>
@@ -495,7 +495,7 @@
 <link name="left_shoulder_yaw">
   <visual>
     <geometry>
-      <mesh filename="package://online_tempo/models/humanMeshed/meshes/leftBicep.dae" scale="0.06 0.06 0.06"/> 
+      <mesh filename="package://rostango/models/humanMeshed/meshes/leftBicep.dae" scale="0.06 0.06 0.06"/> 
     </geometry>
     <origin rpy="0 0 1.57075 " xyz="0.04 -0.16 -1.42" />
   </visual>
@@ -530,7 +530,7 @@
 <link name="left_elbow_yaw">
   <visual>
     <geometry>
-      <mesh filename="package://online_tempo/models/humanMeshed/meshes/leftForearm.dae" scale="0.06 0.06 0.06"/> 
+      <mesh filename="package://rostango/models/humanMeshed/meshes/leftForearm.dae" scale="0.06 0.06 0.06"/> 
     </geometry>
     <origin rpy="0 0 1.57075 " xyz="0.04 -0.4 -1.322" />
   </visual>
@@ -565,7 +565,7 @@
 <link name="left_hand_yaw">
   <visual>
     <geometry>
-      <mesh filename="package://online_tempo/models/humanMeshed/meshes/leftHand.dae" scale="0.06 0.06 0.06"/> 
+      <mesh filename="package://rostango/models/humanMeshed/meshes/leftHand.dae" scale="0.06 0.06 0.06"/> 
     </geometry>
     <origin rpy="0 0 1.57075 " xyz="-0.0075 -0.61 -1.28" />
   </visual>
@@ -600,7 +600,7 @@
 <link name="right_clavicle_yaw">
   <visual>
     <geometry>
-    <mesh filename="package://online_tempo/models/humanMeshed/meshes/rightClavicle.dae" scale="0.06 0.06 0.06"/>
+    <mesh filename="package://rostango/models/humanMeshed/meshes/rightClavicle.dae" scale="0.06 0.06 0.06"/>
     </geometry>
     <origin rpy="0 0 1.57075" xyz="0.04 0 -1.4"/>
   </visual>
@@ -635,7 +635,7 @@
 <link name="right_shoulder_yaw">
   <visual>
     <geometry>
-      <mesh filename="package://online_tempo/models/humanMeshed/meshes/rightBicep.dae" scale="0.06 0.06 0.06"/> 
+      <mesh filename="package://rostango/models/humanMeshed/meshes/rightBicep.dae" scale="0.06 0.06 0.06"/> 
     </geometry>
     <origin rpy="0 0 1.57075 " xyz="0.04 0.16 -1.42" />
   </visual>
@@ -670,7 +670,7 @@
 <link name="right_elbow_yaw">
   <visual>
     <geometry>
-      <mesh filename="package://online_tempo/models/humanMeshed/meshes/rightForearm.dae" scale="0.06 0.06 0.06"/> 
+      <mesh filename="package://rostango/models/humanMeshed/meshes/rightForearm.dae" scale="0.06 0.06 0.06"/> 
     </geometry>
     <origin rpy="0 0 1.57075 " xyz="0.04 0.4 -1.322" />
   </visual>
@@ -705,7 +705,7 @@
 <link name="right_hand_yaw">
   <visual>
     <geometry>
-      <mesh filename="package://online_tempo/models/humanMeshed/meshes/rightHand.dae" scale="0.06 0.06 0.06"/> 
+      <mesh filename="package://rostango/models/humanMeshed/meshes/rightHand.dae" scale="0.06 0.06 0.06"/> 
     </geometry>
     <origin rpy="0 0 1.57075 " xyz="-0.0075 0.61 -1.28" />
   </visual>
@@ -741,7 +741,7 @@
 <link name="neck_yaw">
   <visual>
     <geometry>
-      <mesh filename="package://online_tempo/models/humanMeshed/meshes/neck.dae" scale="0.06 0.06 0.06"/> 
+      <mesh filename="package://rostango/models/humanMeshed/meshes/neck.dae" scale="0.06 0.06 0.06"/> 
     </geometry>
     <origin rpy="0 0 1.57075 " xyz="-0.0075 0 -1.45" />
   </visual>
@@ -776,7 +776,7 @@
 <link name="head_yaw">
   <visual>
     <geometry>
-      <mesh filename="package://online_tempo/models/humanMeshed/meshes/head.dae" scale="0.06 0.06 0.06"/> 
+      <mesh filename="package://rostango/models/humanMeshed/meshes/head.dae" scale="0.06 0.06 0.06"/> 
     </geometry>
     <origin rpy="0 0 1.57075 " xyz="-0.0075 0 -1.53" />
   </visual>

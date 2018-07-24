@@ -112,7 +112,7 @@ void Movement::fillMove(string moveName, string primitiveNumber){
   frames.clear();
   this->moveName = moveName + "_" + primitiveNumber;
   string moveFileLocation;
-  moveFileLocation = "/home/umut/catkin_ws/src/online_tempo/mocap_data/library/primitives/" + moveName + "/" + primitiveNumber + ".bvh";
+  moveFileLocation = "/home/umut/catkin_ws/src/rostango/mocap_data/library/primitives/" + moveName + "/" + primitiveNumber + ".bvh";
   int headerLineCount = 316;
   frameCount = 0;
 
@@ -171,7 +171,7 @@ Movement::Movement(string moveName, string primitiveNumber){          //primitiv
   //cout << "movement primitive constructor is called " << endl;
   this->moveName = moveName + "_" + primitiveNumber;
   string moveFileLocation;
-  moveFileLocation = "/home/umut/catkin_ws/src/online_tempo/mocap_data/library/primitives/" + moveName + "/" + primitiveNumber + ".bvh";
+  moveFileLocation = "/home/umut/catkin_ws/src/rostango/mocap_data/library/primitives/" + moveName + "/" + primitiveNumber + ".bvh";
   int headerLineCount = 316;
   frameCount = 0;
 
@@ -389,7 +389,7 @@ void Movement::extractMove(int frameStart, int frameEnd, Movement* subMove){
 void Movement::printMove(string primitiveName){
   // header for rviz is quite different and unneccessary, skipping it
   /*
-  string headerPath = "/home/umut/catkin_ws/src/online_tempo/mocap_data/library/header.txt";
+  string headerPath = "/home/umut/catkin_ws/src/rostango/mocap_data/library/header.txt";
   string content;
   std::ifstream ifs(headerPath.c_str());
   if(ifs.is_open()){
@@ -399,13 +399,13 @@ void Movement::printMove(string primitiveName){
   else  
     cout << "unable to open header file" << endl;
 
-  string motionFullPath = "/home/umut/catkin_ws/src/online_tempo/mocap_data/library/primitives/" + moveName + "/" + primitiveName + ".bvh" ;
+  string motionFullPath = "/home/umut/catkin_ws/src/rostango/mocap_data/library/primitives/" + moveName + "/" + primitiveName + ".bvh" ;
   ofstream primitiveFile(motionFullPath.c_str()); 
 
   string frameRateInfo = "Frame Time: 0.0349650000"; //roughly 30 fps
 */
   int currentFrame = 0;
-  string motionFullPath = "/home/umut/catkin_ws/src/online_tempo/mocap_data/library/primitives/" + moveName + "/" + primitiveName + ".bvh" ;
+  string motionFullPath = "/home/umut/catkin_ws/src/rostango/mocap_data/library/primitives/" + moveName + "/" + primitiveName + ".bvh" ;
   ofstream primitiveFile(motionFullPath.c_str()); 
 
 
@@ -444,7 +444,7 @@ Movement::Movement(string moveName){   //record constuctor
   this->moveName = moveName;
   string moveFileLocation;
   //Attention!!! figure out how to give relative path
-  moveFileLocation = "/home/umut/catkin_ws/src/online_tempo/mocap_data/library/raw_record/" + moveName + "/record.txt";
+  moveFileLocation = "/home/umut/catkin_ws/src/rostango/mocap_data/library/raw_record/" + moveName + "/record.txt";
   
   frameCount = 0;
   ifstream moveFile(moveFileLocation.c_str());

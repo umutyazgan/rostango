@@ -80,7 +80,7 @@ movement::movement(std::string moveName){
 	frameCount = 0;	
 	float value;
 	std::ifstream moveFile;
-	moveName = "/home/monster2/catkin_ws/src/online_tempo/motion_library/" + moveName + ".txt";
+	moveName = "/home/monster2/catkin_ws/src/rostango/motion_library/" + moveName + ".txt";
 	const char* fileName = moveName.c_str();
 	moveFile.open(fileName);
 	/*

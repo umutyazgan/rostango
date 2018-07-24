@@ -17,7 +17,7 @@
 #include "std_msgs/Float32MultiArray.h"
 
 
-#include <online_tempo/frame_message.h>
+#include <rostango/frame_message.h>
 
 
 #include <random>
@@ -62,7 +62,7 @@ int main(int argc, char** argv){
   vector<int> moveStart;
   vector<int> moveEnd;
   int moveCount = 0;
-  string fullPath = "/home/anil/catkin_ws/src/online_tempo/mocap_data/library/move_locations/mala_vida/move_locations.txt" ;
+  string fullPath = "/home/anil/catkin_ws/src/rostango/mocap_data/library/move_locations/mala_vida/move_locations.txt" ;
   ifstream move_locations(fullPath.c_str());  
   if(move_locations.is_open()){
     while(move_locations.good()){
@@ -296,10 +296,10 @@ string primitiveName;
   inter5.broadcast();
 
 */
-online_tempo::frame_message f_m; 
-//online_tempo::frame_message f_ms[30]; 
+rostango::frame_message f_m; 
+//rostango::frame_message f_ms[30]; 
 
-//online_tempo::frame_message_burst f_m_b;
+//rostango::frame_message_burst f_m_b;
 
 
 
@@ -307,7 +307,7 @@ online_tempo::frame_message f_m;
 
 ros::Subscriber sub = hrk.subscribe("/HarkStdMsgs", 1000, harkBPMSignal);
   
-ros::Publisher tempoMatch_pub = brd.advertise<online_tempo::frame_message>("broadcaster", 10000);
+ros::Publisher tempoMatch_pub = brd.advertise<rostango::frame_message>("broadcaster", 10000);
 ros::Rate send_rate(30);
 
 
