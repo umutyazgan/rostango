@@ -1,0 +1,8 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: online_tempo
+    relative_path: models/humanMeshed/robots/humanMeshed.urdf
+  SRDF:
+    relative_path: config/humanMeshed.srdf
+  CONFIG:
+    generated_timestamp: 1448463075

@@ -20,6 +20,7 @@
 #include <online_tempo/frame_message_burst.h>
 #include <online_tempo/scale_and_cast.h>
 #include "headers/Movement.h"
+#include <online_tempo/imitated_tempo_message.h>
 
 
 #define NCOUNT 22
@@ -46,7 +47,8 @@ void broadcast(const online_tempo::frame_message::ConstPtr& msg){
 
   }
   incomingTempo = msg->tempo;
-  //cout << "inside broadcaster" << endl;
+ 
+//cout << "inside broadcaster" << endl;
   //cout << "did you say " << msg->data << endl;
 
   
@@ -63,6 +65,10 @@ void broadcast(const online_tempo::frame_message::ConstPtr& msg){
   
 }
 
+//void get_imit_tempo(const online_tempo::imitated_tempo_message::ConstPtr& msg){
+//    incomingTempo = msg->tempo;
+//}
+
 
 int main(int argc, char** argv){
   ros::init(argc, argv, "broadcast_node");
@@ -70,7 +76,7 @@ int main(int argc, char** argv){
   //ros::Rate mainRate(10);
   ros::NodeHandle nb;
   ros::Subscriber sub = nb.subscribe("broadcaster", 10000, broadcast);
-  
+//  ros::Subscriber sub2 = nb.subscribe("imitated_tempo", 10000, get_imit_tempo);
   //ros::Rate polling_rate(300);
   
   /*
@@ -89,6 +95,9 @@ int main(int argc, char** argv){
 
     // message declarations
     geometry_msgs::TransformStamped transList[NCOUNT];
+
+
+  
       //  sensor_msgs::JointState joint_state;
     transList[0].header.frame_id = "base_link";
     transList[0].child_frame_id = "hip";
@@ -157,6 +166,76 @@ int main(int argc, char** argv){
     
     transList[21].header.frame_id = "left_foot";
     transList[21].child_frame_id = "left_toe";
+
+/*
+    transList[0].header.frame_id = "base_link";
+    transList[0].child_frame_id = "torso";
+    
+    transList[1].header.frame_id = "torso";
+    transList[1].child_frame_id = "Neck";
+    
+    transList[2].header.frame_id = "lower_spine";
+    transList[2].child_frame_id = "middle_spine";
+    
+    transList[3].header.frame_id = "middle_spine";
+    transList[3].child_frame_id = "chest";
+    //
+    transList[4].header.frame_id = "chest";
+    transList[4].child_frame_id = "neck";
+    
+    transList[5].header.frame_id = "Neck";
+    transList[5].child_frame_id = "Head";
+    //
+    transList[6].header.frame_id = "torso";
+    transList[6].child_frame_id = "LShoulder";
+    
+    transList[7].header.frame_id = "LShoulder";
+    transList[7].child_frame_id = "LElbow";
+    
+    transList[8].header.frame_id = "LElbow";
+    transList[8].child_frame_id = "l_wrist";
+    
+    transList[9].header.frame_id = "l_wrist";
+    transList[9].child_frame_id = "l_gripper";
+    
+    //
+    transList[10].header.frame_id = "torso";
+    transList[10].child_frame_id = "RShoulder";
+    
+    transList[11].header.frame_id = "RShoulder";
+    transList[11].child_frame_id = "RElbow";
+    
+    transList[12].header.frame_id = "RElbow";
+    transList[12].child_frame_id = "r_wrist";
+    
+    transList[13].header.frame_id = "r_wrist";
+    transList[13].child_frame_id = "r_gripper";
+        
+    //
+    transList[14].header.frame_id = "torso";
+    transList[14].child_frame_id = "RPelvis";
+    
+    transList[15].header.frame_id = "RPelvis";
+    transList[15].child_frame_id = "RTibia";
+    
+    transList[16].header.frame_id = "RTibia";
+    transList[16].child_frame_id = "r_ankle";
+    
+    transList[17].header.frame_id = "r_ankle";
+    transList[17].child_frame_id = "r_sole";
+    
+    transList[18].header.frame_id = "torso";
+    transList[18].child_frame_id = "LPelvis";
+    
+    transList[19].header.frame_id = "LPelvis";
+    transList[19].child_frame_id = "LTibia";
+    
+    transList[20].header.frame_id = "LTibia";
+    transList[20].child_frame_id = "l_ankle";
+    
+    transList[21].header.frame_id = "l_ankle";
+    transList[21].child_frame_id = "l_sole";
+*/
   ros::Rate sleep_rate(30);  
   bool frameNotSent = true;
   Joint jnt;      
@@ -180,6 +259,9 @@ int main(int argc, char** argv){
         broadcaster.sendTransform(transList[i]);
         cout << "detected tempo: " << incomingTempo << endl;
       }
+//      else{
+//	  cout << incomingTempo << endl;
+//	}      
     }
     ros::spinOnce();   
   

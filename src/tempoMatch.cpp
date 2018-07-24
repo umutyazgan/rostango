@@ -18,7 +18,9 @@
 
 
 #include <online_tempo/frame_message.h>
-
+#include <online_tempo/imitated_tempo_message.h>
+//#include <message_filters/subscriber.h>
+//#include <message_filters/time_synchronizer.h>
 
 #include <random>
 
@@ -40,13 +42,27 @@ void harkBPMSignal(const std_msgs::Float32MultiArray::ConstPtr& msg)
   }
   */
   if(msg->data[0] != 0){ //if message is reliable enough
+//      std::cout << "data[0]: " << msg->data[0] << "  data[1]: " << msg->data[1] << endl;
       currentTempo = msg->data[0];
     //  std::cout << "Tempo found: " << msg->data[0] << std::endl;
       harkSignalReady = true;
   }
 }
-//    harkSignalReady = false;
+    harkSignalReady = false;
 
+//void imitated_tempo_callback(const online_tempo::imitated_tempo_message::ConstPtr& msg){
+//    currentTempo = msg->tempo;
+//    harkSignalReady = true;
+////    std::cout << "currentTempo: "<< currentTempo << endl;
+//}
+
+//void callback(const online_tempo::imitated_tempo_message::ConstPtr& imit_msg, 
+//	      const std_msgs::Float32MultiArray::ConstPtr& hark_msg){
+//    if(hark_msg->data[0] != 0){
+//        currentTempo = imit_msg->tempo;
+//	harkSignalReady = true;
+//    }
+//}
 
 int main(int argc, char** argv){
  
@@ -107,7 +123,8 @@ string primitiveName;
   ros::init(argc, argv, "hark");
   ros::NodeHandle brd;
   ros::NodeHandle hrk;
-  
+//  ros::NodeHandle imit;
+
   //Movement demo("mala_vida");
   
   //cout << "waiting for BPM..." << endl;
@@ -306,7 +323,12 @@ online_tempo::frame_message f_m;
 
 
 ros::Subscriber sub = hrk.subscribe("/HarkStdMsgs", 1000, harkBPMSignal);
-  
+
+//ros::Subscriber sub = imit.subscribe("imitated_tempo", 1000, imitated_tempo_callback);
+//message_filters::Subscriber<online_tempo::imitated_tempo_message> imit_sub(imit, "imitated_tempo", 1000);
+//message_filters::Subscriber<std_msgs::Float32MultiArray> hark_sub(hrk, "/HarkStdMsgs", 1000);
+//message_filters::TimeSynchronizer<online_tempo::imitated_tempo_message, std_msgs::Float32MultiArray> sync(imit_sub,hark_sub,10000);
+//sync.registerCallback(boost::bind(&callback, _1, _2));
 ros::Publisher tempoMatch_pub = brd.advertise<online_tempo::frame_message>("broadcaster", 10000);
 ros::Rate send_rate(30);
 
@@ -354,12 +376,19 @@ std::random_device rd;
 std::mt19937 gen(rd());
 std::uniform_int_distribution<> dis(1, 30);
 //dis(gen) produces random integer on range above 
+
 lastMove = primPtr[dis(gen)];
 nextMove = primPtr[dis(gen)];  
+
+//lastMove = primPtr[0]; // testing purpose, eliminates randomness
+//nextMove = primPtr[1];
+//int counter = 2;
+
 moveToSend = lastMove;
 Frame frm;
 while (ros::ok()){
     //if (harkSignalReady = false)
+  //std::cout << "harkSignalReady" << harkSignalReady << std::endl;
   if(harkSignalReady == false){
     ros::spinOnce();
   }
@@ -398,7 +427,11 @@ while (ros::ok()){
        // ROS_INFO ("interpolation: %s is sent", moveToSend->getMoveName().c_str());
         interpolationTurn = false;
         lastMove = nextMove;
+
         nextMove = primPtr[dis(gen)];
+
+//	nextMove = primPtr[counter]; // testing purpose, eliminates randomness
+//	counter++;
       }
       else{ //time to send primitive
         //if (currentTempo != lastMove->getTempo()){ // scale the moves when needed
@@ -457,6 +490,8 @@ while (ros::ok()){
 
 
     f_m.tempo = moveToSend->getTempo(); 
+    f_m.moveName = moveToSend->getMoveName();
+    f_m.currentFrame = currentFrame;
     if(currentTempo != 0){
       tempoMatch_pub.publish(f_m);    
     }

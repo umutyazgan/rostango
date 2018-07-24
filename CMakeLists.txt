@@ -4,7 +4,9 @@ project(online_tempo)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs rosbag tf message_generation)
+find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs rosbag tf message_generation 
+    #message_filters
+)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -27,6 +29,7 @@ add_message_files(
   joint_message.msg
   frame_message_burst.msg
   scale_and_cast.msg
+  imitated_tempo_message.msg
 )
 
 ## Generate services in the 'srv' folder
@@ -54,8 +57,8 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES beginner_tutorials
-  CATKIN_DEPENDS message_runtime
-#  DEPENDS system_lib
+  CATKIN_DEPENDS roscpp rospy std_msgs message_runtime
+#  DEPENDS boost
 )
 
 ###########
@@ -66,6 +69,7 @@ catkin_package(
 ## Your package locations should be listed before other locations
 # include_directories(include)
 include_directories(
+  include
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -79,7 +83,7 @@ include_directories(
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
-# add_dependencies(beginner_tutorials_node beginner_tutorials_generate_messages_cpp)
+#add_dependencies(abominationBroadcast msg_pkg_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
 # target_link_libraries(beginner_tutorials_node
@@ -120,8 +124,17 @@ include_directories(
 #   # myfile2
 #   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 # )
-#This supposedly enables c++11 flag 
-set(CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS}")
+# check c++11 / c++0x
+include(CheckCXXCompilerFlag)
+CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
+CHECK_CXX_COMPILER_FLAG("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
+if(COMPILER_SUPPORTS_CXX11)
+    set(CMAKE_CXX_FLAGS "-std=c++11")
+elseif(COMPILER_SUPPORTS_CXX0X)
+    set(CMAKE_CXX_FLAGS "-std=c++0x")
+else()
+    message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
+endif()
 
 
 #############
@@ -137,29 +150,53 @@ set(CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS}")
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-include_directories(include ${catkin_INCLUDE_DIRS})
+#include_directories(include ${catkin_INCLUDE_DIRS})
 
-add_executable(animate src/animate.cpp)
-target_link_libraries(animate ${catkin_LIBRARIES})
-add_executable(harkMessage src/harkMessage.cpp)
-target_link_libraries(harkMessage ${catkin_LIBRARIES})
-add_executable(animateFull src/animateFull.cpp)
-target_link_libraries(animateFull ${catkin_LIBRARIES})
-add_executable(jointState src/jointState.cpp)
-target_link_libraries(jointState ${catkin_LIBRARIES})
+#add_executable(harkMessage src/harkMessage.cpp)
+#target_link_libraries(harkMessage ${catkin_LIBRARIES})
+
+#add_executable(jointState src/jointState.cpp)
+#target_link_libraries(jointState ${catkin_LIBRARIES})
+
 add_executable(tempoMatch src/tempoMatch.cpp)
 target_link_libraries(tempoMatch ${catkin_LIBRARIES})
-#add_executable(tempoMatchMulti src/tempoMatchMulti.cpp)
-#target_link_libraries(tempoMatchMulti ${catkin_LIBRARIES})
+
 add_executable(broadcast src/broadcast.cpp)
 target_link_libraries(broadcast ${catkin_LIBRARIES})
-add_executable(broadcastPepper src/broadcastPepper.cpp)
-target_link_libraries(broadcastPepper ${catkin_LIBRARIES})
-add_executable(broadcastJoints src/broadcastJoints.cpp)
-target_link_libraries(broadcastJoints ${catkin_LIBRARIES})
+
+#add_executable(broadcastPepper src/broadcastPepper.cpp)
+#target_link_libraries(broadcastPepper ${catkin_LIBRARIES})
+
+#add_executable(abominationBroadcast src/abominationBroadcast.cpp)
+#target_link_libraries(abominationBroadcast ${catkin_LIBRARIES})
+
+#add_executable(tempoMatchCustom src/tempoMatchCustom.cpp)
+#target_link_libraries(tempoMatchCustom ${catkin_LIBRARIES})
+
+#add_executable(elbowRotate src/elbowRotate.cpp)
+#target_link_libraries(elbowRotate ${catkin_LIBRARIES})
+
+#add_executable(naoHumanMapped src/naoHumanMapped.cpp)
+#target_link_libraries(naoHumanMapped ${catkin_LIBRARIES})
+
+#add_executable(naoIKTest src/naoKinematics/naoIKTest.cpp src/naoKinematics/NAOKinematics.cpp src/naoKinematics/NAOKinematicsJacobian.cpp )
+#target_link_libraries(naoIKTest ${catkin_LIBRARIES})
+
+#add_executable(elbowRotateKinematic src/elbowRotateKinematic.cpp src/naoKinematics/NAOKinematics.cpp src/naoKinematics/NAOKinematicsJacobian.cpp )
+#target_link_libraries(elbowRotateKinematic ${catkin_LIBRARIES})
+
+#add_executable(broadcastPrimitive src/broadcastPrimitive.cpp src/broadcastPrimitive.cpp  )
+#target_link_libraries(broadcastPrimitive ${catkin_LIBRARIES})
 
 
 
 #add_executable(broadcast_dance src/broadcast_dance.cpp)
 #target_link_libraries(broadcast_dance ${catkin_LIBRARIES})
 
+add_executable(imitated_tempo_publisher src/imitated_tempo_publisher.cpp)
+target_link_libraries(imitated_tempo_publisher ${catkin_LIBRARIES})
+add_dependencies(imitated_tempo_publisher online_tempo_generate_messages_cpp)
+
+add_executable(imitated_tempo_input src/imitated_tempo_input.cpp)
+target_link_libraries(imitated_tempo_input ${catkin_LIBRARIES})
+add_dependencies(imitated_tempo_input online_tempo_generate_messages_cpp)

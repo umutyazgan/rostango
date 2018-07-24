@@ -1,0 +1,810 @@
+Panels:
+  - Class: rviz/Displays
+    Help Height: 78
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /Global Options1
+        - /Status1
+        - /TF1
+        - /TF1/Frames1
+      Splitter Ratio: 0.694631
+    Tree Height: 601
+  - Class: rviz/Selection
+    Name: Selection
+  - Class: rviz/Tool Properties
+    Expanded:
+      - /2D Pose Estimate1
+      - /2D Nav Goal1
+      - /Publish Point1
+    Name: Tool Properties
+    Splitter Ratio: 0.588679
+  - Class: rviz/Views
+    Expanded:
+      - /Current View1
+    Name: Views
+    Splitter Ratio: 0.5
+  - Class: rviz/Time
+    Experimental: false
+    Name: Time
+    SyncMode: 0
+    SyncSource: ""
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Alpha: 0.5
+      Cell Size: 1
+      Class: rviz/Grid
+      Color: 160; 160; 164
+      Enabled: true
+      Line Style:
+        Line Width: 0.03
+        Value: Lines
+      Name: Grid
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XY
+      Plane Cell Count: 10
+      Reference Frame: <Fixed Frame>
+      Value: true
+    - Alpha: 1
+      Class: rviz/RobotModel
+      Collision Enabled: false
+      Enabled: true
+      Links:
+        All Links Enabled: true
+        Expand Joint Details: false
+        Expand Link Details: false
+        Expand Tree: false
+        Link Tree Style: Links in Alphabetic Order
+        base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        chest:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        chest_pitch:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        chest_roll:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        chest_yaw:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        head:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        head_pitch:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        head_roll:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        head_yaw:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        hip:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        hip_pitch:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        hip_roll:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        hip_yaw:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        left_clavicle:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        left_clavicle_pitch:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        left_clavicle_roll:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        left_clavicle_yaw:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        left_elbow_pitch:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        left_elbow_roll:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        left_elbow_yaw:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        left_foot:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        left_foot_pitch:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        left_foot_roll:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        left_foot_toe:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        left_foot_yaw:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        left_forearm:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        left_hand:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        left_hand_pitch:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        left_hand_roll:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        left_hand_yaw:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        left_knee_pitch:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        left_knee_roll:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        left_knee_yaw:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        left_leg:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        left_shoulder:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        left_shoulder_pitch:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        left_shoulder_roll:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        left_shoulder_yaw:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        left_thigh_pitch:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        left_thigh_roll:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        left_thigh_yaw:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        left_tigh:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        left_toe_pitch:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        left_toe_roll:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        left_toe_yaw:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        lower_spine:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        lower_spine_pitch:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        lower_spine_roll:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        lower_spine_yaw:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        middle_spine:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        middle_spine_pitch:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        middle_spine_roll:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        middle_spine_yaw:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        neck:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        neck_pitch:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        neck_roll:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        neck_yaw:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_clavicle:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        right_clavicle_pitch:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        right_clavicle_roll:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        right_clavicle_yaw:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_elbow_pitch:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        right_elbow_roll:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        right_elbow_yaw:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_foot:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        right_foot_pitch:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        right_foot_roll:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        right_foot_toe:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        right_foot_yaw:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_forearm:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        right_hand:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        right_hand_pitch:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        right_hand_roll:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        right_hand_yaw:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_knee_pitch:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        right_knee_roll:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        right_knee_yaw:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_leg:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        right_shoulder:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        right_shoulder_pitch:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        right_shoulder_roll:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        right_shoulder_yaw:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_thigh_pitch:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        right_thigh_roll:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        right_thigh_yaw:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_tigh:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        right_toe_pitch:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        right_toe_roll:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        right_toe_yaw:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+      Name: RobotModel
+      Robot Description: robot_description
+      TF Prefix: ""
+      Update Interval: 0
+      Value: true
+      Visual Enabled: true
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: false
+        base_link:
+          Value: false
+        chest:
+          Value: false
+        chest_pitch:
+          Value: true
+        chest_roll:
+          Value: true
+        chest_yaw:
+          Value: true
+        head:
+          Value: false
+        head_pitch:
+          Value: true
+        head_roll:
+          Value: true
+        head_yaw:
+          Value: true
+        hip:
+          Value: false
+        hip_pitch:
+          Value: true
+        hip_roll:
+          Value: true
+        hip_yaw:
+          Value: true
+        left_clavicle:
+          Value: false
+        left_clavicle_pitch:
+          Value: true
+        left_clavicle_roll:
+          Value: true
+        left_clavicle_yaw:
+          Value: true
+        left_elbow_pitch:
+          Value: true
+        left_elbow_roll:
+          Value: true
+        left_elbow_yaw:
+          Value: true
+        left_foot:
+          Value: false
+        left_foot_pitch:
+          Value: true
+        left_foot_roll:
+          Value: true
+        left_foot_toe:
+          Value: false
+        left_foot_yaw:
+          Value: true
+        left_forearm:
+          Value: false
+        left_hand:
+          Value: false
+        left_hand_pitch:
+          Value: true
+        left_hand_roll:
+          Value: true
+        left_hand_yaw:
+          Value: true
+        left_knee_pitch:
+          Value: true
+        left_knee_roll:
+          Value: true
+        left_knee_yaw:
+          Value: true
+        left_leg:
+          Value: false
+        left_shoulder:
+          Value: false
+        left_shoulder_pitch:
+          Value: true
+        left_shoulder_roll:
+          Value: true
+        left_shoulder_yaw:
+          Value: true
+        left_thigh_pitch:
+          Value: true
+        left_thigh_roll:
+          Value: true
+        left_thigh_yaw:
+          Value: true
+        left_tigh:
+          Value: false
+        left_toe_pitch:
+          Value: true
+        left_toe_roll:
+          Value: true
+        left_toe_yaw:
+          Value: true
+        lower_spine:
+          Value: false
+        lower_spine_pitch:
+          Value: true
+        lower_spine_roll:
+          Value: true
+        lower_spine_yaw:
+          Value: true
+        middle_spine:
+          Value: false
+        middle_spine_pitch:
+          Value: true
+        middle_spine_roll:
+          Value: true
+        middle_spine_yaw:
+          Value: true
+        neck:
+          Value: false
+        neck_pitch:
+          Value: true
+        neck_roll:
+          Value: true
+        neck_yaw:
+          Value: true
+        right_clavicle:
+          Value: false
+        right_clavicle_pitch:
+          Value: true
+        right_clavicle_roll:
+          Value: true
+        right_clavicle_yaw:
+          Value: true
+        right_elbow_pitch:
+          Value: true
+        right_elbow_roll:
+          Value: true
+        right_elbow_yaw:
+          Value: true
+        right_foot:
+          Value: false
+        right_foot_pitch:
+          Value: true
+        right_foot_roll:
+          Value: true
+        right_foot_toe:
+          Value: false
+        right_foot_yaw:
+          Value: true
+        right_forearm:
+          Value: false
+        right_hand:
+          Value: false
+        right_hand_pitch:
+          Value: true
+        right_hand_roll:
+          Value: true
+        right_hand_yaw:
+          Value: true
+        right_knee_pitch:
+          Value: true
+        right_knee_roll:
+          Value: true
+        right_knee_yaw:
+          Value: true
+        right_leg:
+          Value: false
+        right_shoulder:
+          Value: false
+        right_shoulder_pitch:
+          Value: true
+        right_shoulder_roll:
+          Value: true
+        right_shoulder_yaw:
+          Value: true
+        right_thigh_pitch:
+          Value: true
+        right_thigh_roll:
+          Value: true
+        right_thigh_yaw:
+          Value: true
+        right_tigh:
+          Value: false
+        right_toe_pitch:
+          Value: true
+        right_toe_roll:
+          Value: true
+        right_toe_yaw:
+          Value: true
+      Marker Scale: 1
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: false
+      Tree:
+        base_link:
+          hip:
+            left_tigh:
+              left_leg:
+                left_foot:
+                  left_foot_toe:
+                    {}
+            lower_spine:
+              middle_spine:
+                chest:
+                  left_clavicle:
+                    left_shoulder:
+                      left_forearm:
+                        left_hand:
+                          {}
+                  neck:
+                    head:
+                      {}
+                  right_clavicle:
+                    right_shoulder:
+                      right_forearm:
+                        right_hand:
+                          {}
+            right_tigh:
+              right_leg:
+                right_foot:
+                  right_foot_toe:
+                    {}
+          hip_roll:
+            hip_pitch:
+              hip_yaw:
+                left_thigh_roll:
+                  left_thigh_pitch:
+                    left_thigh_yaw:
+                      left_knee_roll:
+                        left_knee_pitch:
+                          left_knee_yaw:
+                            left_foot_roll:
+                              left_foot_pitch:
+                                left_foot_yaw:
+                                  left_toe_roll:
+                                    left_toe_pitch:
+                                      left_toe_yaw:
+                                        {}
+                lower_spine_roll:
+                  lower_spine_pitch:
+                    lower_spine_yaw:
+                      middle_spine_roll:
+                        middle_spine_pitch:
+                          middle_spine_yaw:
+                            chest_roll:
+                              chest_pitch:
+                                chest_yaw:
+                                  left_clavicle_roll:
+                                    left_clavicle_pitch:
+                                      left_clavicle_yaw:
+                                        left_shoulder_roll:
+                                          left_shoulder_pitch:
+                                            left_shoulder_yaw:
+                                              left_elbow_roll:
+                                                left_elbow_pitch:
+                                                  left_elbow_yaw:
+                                                    left_hand_roll:
+                                                      left_hand_pitch:
+                                                        left_hand_yaw:
+                                                          {}
+                                  neck_roll:
+                                    neck_pitch:
+                                      neck_yaw:
+                                        head_roll:
+                                          head_pitch:
+                                            head_yaw:
+                                              {}
+                                  right_clavicle_roll:
+                                    right_clavicle_pitch:
+                                      right_clavicle_yaw:
+                                        right_shoulder_roll:
+                                          right_shoulder_pitch:
+                                            right_shoulder_yaw:
+                                              right_elbow_roll:
+                                                right_elbow_pitch:
+                                                  right_elbow_yaw:
+                                                    right_hand_roll:
+                                                      right_hand_pitch:
+                                                        right_hand_yaw:
+                                                          {}
+                right_thigh_roll:
+                  right_thigh_pitch:
+                    right_thigh_yaw:
+                      right_knee_roll:
+                        right_knee_pitch:
+                          right_knee_yaw:
+                            right_foot_roll:
+                              right_foot_pitch:
+                                right_foot_yaw:
+                                  right_toe_roll:
+                                    right_toe_pitch:
+                                      right_toe_yaw:
+                                        {}
+      Update Interval: 0
+      Value: true
+  Enabled: true
+  Global Options:
+    Background Color: 48; 48; 48
+    Fixed Frame: base_link
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz/Interact
+      Hide Inactive Objects: true
+    - Class: rviz/MoveCamera
+    - Class: rviz/Select
+    - Class: rviz/FocusCamera
+    - Class: rviz/Measure
+    - Class: rviz/SetInitialPose
+      Topic: /initialpose
+    - Class: rviz/SetGoal
+      Topic: /move_base_simple/goal
+    - Class: rviz/PublishPoint
+      Single click: true
+      Topic: /clicked_point
+  Value: true
+  Views:
+    Current:
+      Class: rviz/Orbit
+      Distance: 2.45081
+      Enable Stereo Rendering:
+        Stereo Eye Separation: 0.06
+        Stereo Focal Distance: 1
+        Swap Stereo Eyes: false
+        Value: false
+      Focal Point:
+        X: -0.200361
+        Y: 0.172402
+        Z: 0.698153
+      Name: Current View
+      Near Clip Distance: 0.01
+      Pitch: 0.510398
+      Target Frame: <Fixed Frame>
+      Value: Orbit (rviz)
+      Yaw: 5.62859
+    Saved:
+      - Class: rviz/Orbit
+        Distance: 2.45081
+        Enable Stereo Rendering:
+          Stereo Eye Separation: 0.06
+          Stereo Focal Distance: 1
+          Swap Stereo Eyes: false
+          Value: false
+        Focal Point:
+          X: -0.200361
+          Y: 0.172402
+          Z: 0.698153
+        Name: Orbit
+        Near Clip Distance: 0.01
+        Pitch: 0.510398
+        Target Frame: <Fixed Frame>
+        Value: Orbit (rviz)
+        Yaw: 5.62859
+Window Geometry:
+  Displays:
+    collapsed: false
+  Height: 882
+  Hide Left Dock: false
+  Hide Right Dock: false
+  QMainWindow State: 000000ff00000000fd00000004000000000000013c000002e8fc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000006400fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c0061007900730100000028000002e8000000dd00fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000010f000002e8fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a005600690065007700730100000028000002e8000000b000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004c00000003efc0100000002fb0000000800540069006d00650100000000000004c0000002f600fffffffb0000000800540069006d0065010000000000000450000000000000000000000269000002e800000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  Selection:
+    collapsed: false
+  Time:
+    collapsed: false
+  Tool Properties:
+    collapsed: false
+  Views:
+    collapsed: false
+  Width: 1216
+  X: 55
+  Y: 50

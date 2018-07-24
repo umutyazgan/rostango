@@ -56,17 +56,45 @@ public:
   void updateFrameCount(int);
   void interpolate(Movement*, Movement*, int); //last frame, first frame, length
   void shiftMove(float, float, float);
+  void rotateMove(double);
   void fillMove(string, string); //ATTENTION this might be redundant in the future
   void clearMove();
   float getTempo();
   void setTempo(float);
-private:                    //fix later needs to be at least protected
+private:                    
   std::vector<Frame> frames;
   int frameCount;
   int interWindow;
   string moveName;
   float tempo;
 };
+
+void Movement::rotateMove(double rotationDifference){
+  int currentFrame = 0;
+  //shift second move to end of first move. Hip joint is selected as pivot joint
+  int pivotJoint = 0; // Hip is joint 0. Will be used for pivot 
+  
+  //cout << "shifting the move by xyz: " << shiftX << " " << shiftY << " " << shiftZ << endl; 
+  while(currentFrame < getFrameCount()){
+    this->frames[currentFrame].joints[pivotJoint].rotZ -= rotationDifference;
+    //this->frames[currentFrame].joints[pivotJoint].transZ -= shiftZ; // no need to shift on Z actor's height should not change
+    currentFrame++;
+  }
+  currentFrame = 0;
+  /*
+  while (currentFrame < getFrameCount()){
+    for (int i = 1; i < NCOUNT; i++){
+      double pastTransX = frames[currentFrame].joints[i].transX;
+      double pastTransY = frames[currentFrame].joints[i].transY;
+      frames[currentFrame].joints[i].transX = pastTransX * cos(rotationDifference) -
+                                                    pastTransY * sin(rotationDifference);
+      frames[currentFrame].joints[i].transY = pastTransX * sin(rotationDifference) + 
+                                                    pastTransY * cos(rotationDifference);          
+    }
+    currentFrame++;
+  }
+  */
+}
 
 float Movement::getTempo(){
   return tempo;
@@ -84,7 +112,7 @@ void Movement::fillMove(string moveName, string primitiveNumber){
   frames.clear();
   this->moveName = moveName + "_" + primitiveNumber;
   string moveFileLocation;
-  moveFileLocation = "/home/monster2/catkin_ws/src/online_tempo/mocap_data/library/primitives/" + moveName + "/" + primitiveNumber + ".bvh";
+  moveFileLocation = "/home/umut/catkin_ws/src/online_tempo/mocap_data/library/primitives/" + moveName + "/" + primitiveNumber + ".bvh";
   int headerLineCount = 316;
   frameCount = 0;
 
@@ -143,7 +171,7 @@ Movement::Movement(string moveName, string primitiveNumber){          //primitiv
   //cout << "movement primitive constructor is called " << endl;
   this->moveName = moveName + "_" + primitiveNumber;
   string moveFileLocation;
-  moveFileLocation = "/home/monster2/catkin_ws/src/online_tempo/mocap_data/library/primitives/" + moveName + "/" + primitiveNumber + ".bvh";
+  moveFileLocation = "/home/umut/catkin_ws/src/online_tempo/mocap_data/library/primitives/" + moveName + "/" + primitiveNumber + ".bvh";
   int headerLineCount = 316;
   frameCount = 0;
 
@@ -266,7 +294,7 @@ void Movement::interpolate(Movement* lastMove, Movement* nextMove, int interpola
   double shiftX;
   double shiftY;
   double shiftZ = 0;
-  if (distanceLeft > distanceRight){
+  if (distanceLeft < distanceRight){
     pivotJoint = 21; //left foot
     shiftX = NR.transX - LR.transX;
     shiftY = NR.transY - LR.transY;
@@ -279,6 +307,9 @@ void Movement::interpolate(Movement* lastMove, Movement* nextMove, int interpola
     //---------------
   Frame targetFrame = nextMove->getFrame(0);   //interpolation will end at the beginning of new move
   Frame refFrame = lastMove->getFrame(lastMove->frames.size() - 1); //interpolation starts at the last frame of last move
+  
+  double shiftRotZ = targetFrame.joints[0].rotZ - refFrame.joints[0].rotZ;
+  nextMove->rotateMove(shiftRotZ);
   
   nextMove->shiftMove(shiftX, shiftY, shiftZ);
   //Next move is shifted. Time for interpolation
@@ -358,7 +389,7 @@ void Movement::extractMove(int frameStart, int frameEnd, Movement* subMove){
 void Movement::printMove(string primitiveName){
   // header for rviz is quite different and unneccessary, skipping it
   /*
-  string headerPath = "/home/monster2/catkin_ws/src/online_tempo/mocap_data/library/header.txt";
+  string headerPath = "/home/umut/catkin_ws/src/online_tempo/mocap_data/library/header.txt";
   string content;
   std::ifstream ifs(headerPath.c_str());
   if(ifs.is_open()){
@@ -368,13 +399,13 @@ void Movement::printMove(string primitiveName){
   else  
     cout << "unable to open header file" << endl;
 
-  string motionFullPath = "/home/monster2/catkin_ws/src/online_tempo/mocap_data/library/primitives/" + moveName + "/" + primitiveName + ".bvh" ;
+  string motionFullPath = "/home/umut/catkin_ws/src/online_tempo/mocap_data/library/primitives/" + moveName + "/" + primitiveName + ".bvh" ;
   ofstream primitiveFile(motionFullPath.c_str()); 
 
   string frameRateInfo = "Frame Time: 0.0349650000"; //roughly 30 fps
 */
   int currentFrame = 0;
-  string motionFullPath = "/home/monster2/catkin_ws/src/online_tempo/mocap_data/library/primitives/" + moveName + "/" + primitiveName + ".bvh" ;
+  string motionFullPath = "/home/umut/catkin_ws/src/online_tempo/mocap_data/library/primitives/" + moveName + "/" + primitiveName + ".bvh" ;
   ofstream primitiveFile(motionFullPath.c_str()); 
 
 
@@ -413,7 +444,7 @@ Movement::Movement(string moveName){   //record constuctor
   this->moveName = moveName;
   string moveFileLocation;
   //Attention!!! figure out how to give relative path
-  moveFileLocation = "/home/monster2/catkin_ws/src/online_tempo/mocap_data/library/raw_record/" + moveName + "/record.txt";
+  moveFileLocation = "/home/umut/catkin_ws/src/online_tempo/mocap_data/library/raw_record/" + moveName + "/record.txt";
   
   frameCount = 0;
   ifstream moveFile(moveFileLocation.c_str());

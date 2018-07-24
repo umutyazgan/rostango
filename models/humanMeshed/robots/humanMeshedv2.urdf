@@ -1,0 +1,779 @@
+<?xml version="1.0"?>
+<robot name="humanMeshed">
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <sphere radius="0.01"/>
+      </geometry>
+    </visual>
+  </link>
+
+<!--   HIP starts here  -->
+  <link name="hip_roll"/>
+
+  <joint name="hip_roll" type="continuous">
+    <parent link="base_link" />
+    <child link="hip_roll" />
+    <origin xyz="0 0 0.884764"/>
+    <axis xyz="1.0 0 0"/>
+  </joint>
+
+  <link name="hip_pitch">
+    
+  </link>
+
+  <joint name="hip_pitch" type="continuous">
+    <parent link="hip_roll"/>
+    <child link="hip_pitch"/>
+    <origin xyz="0 0 0"/>
+    <axis xyz="0 1.0 0"/>
+  </joint>
+
+  <link name="hip_yaw">
+        <visual>
+      <geometry>  
+        <mesh filename="package://online_tempo/models/humanMeshed/meshes/pelvis.dae" scale="0.06 0.06 0.06"/>
+     </geometry>
+      <origin rpy="0 0 1.57075" xyz="0 0 -0.96"/>   
+    </visual>
+  </link>
+
+  <joint name="hip_yaw" type="continuous">
+    <parent link="hip_pitch"/>
+    <child link="hip_yaw"/>
+    <origin xyz="0 0 0"/>
+    <axis xyz="0 0 1.0"/>
+  </joint>
+
+ <!--           HIP ENDS HERE        -->
+ <!--      RIGHT THIGH STARTS HERE    -->
+ <joint name="right_thigh_roll" type="continuous">
+    <parent link="hip_yaw"/>
+    <child link="right_thigh_roll"/>
+    <origin xyz="0 -0.0875 0.0375"/>
+    <axis xyz="1.0 0 0"/>
+ </joint>
+
+ <link name="right_thigh_roll"/>
+
+ <joint name="right_thigh_pitch" type="continuous">
+    <parent link="right_thigh_roll"/>
+    <child link="right_thigh_pitch"/>
+    <origin xyz="0 0 0"/>
+    <axis xyz="0 1.0 0"/>
+ </joint>
+
+ <link name="right_thigh_pitch"/>
+
+ <joint name="right_thigh_yaw" type="continuous">
+    <parent link="right_thigh_pitch"/>
+    <child link="right_thigh_yaw"/>
+    <origin xyz="0 0 0"/>
+    <axis xyz="0 0 1.0"/>
+ </joint>
+
+<link name="right_thigh_yaw">
+  <visual>
+    <geometry>
+      <mesh filename="package://online_tempo/models/humanMeshed/meshes/rightThigh.dae" scale="0.06 0.06 0.06"/>
+    </geometry>      
+    <origin rpy="0 0 1.57075" xyz="0 0.0875 -0.8725"/>  
+  </visual>
+</link>
+<!--       RIGHT THIGH ENDS HERE       -->
+<!--       RIGHT KNEE STARTS HERE      -->
+<joint name="right_knee_roll" type="continuous">
+  <parent link="right_thigh_yaw"/>
+  <child link="right_knee_roll"/>
+  <origin xyz="-0.05 0.02 -0.3375"/>
+  <axis xyz="1.0 0 0"/>
+</joint>
+
+<link name="right_knee_roll"/>
+
+<joint name="right_knee_pitch" type="continuous">
+  <parent link="right_knee_roll"/>
+  <child link="right_knee_pitch"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 1.0 0"/>
+</joint>
+
+<link name="right_knee_pitch"/>
+
+<joint name="right_knee_yaw" type="continuous">
+  <parent link="right_knee_pitch"/>
+  <child link="right_knee_yaw"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 0 1.0"/>
+</joint>
+
+<link name="right_knee_yaw">
+  <visual>
+    <geometry>
+      <mesh filename="package://online_tempo/models/humanMeshed/meshes/rightShin.dae" scale="0.06 0.06 0.06"/>
+    </geometry>      
+    <origin rpy="0 0 1.57075" xyz="0.05 0.0675 -0.53"/>    
+  </visual>
+</link>
+<!--         RIGHT KNEE ENDS HERE   -->
+<!--         RIGHT FOOT STARTS HERE -->
+<joint name="right_foot_roll" type="continuous">
+  <parent link="right_knee_yaw"/>
+  <child link="right_foot_roll"/>
+  <origin xyz="-0.0225 0.0125 -0.425"/>
+  <axis xyz="1.0 0 0"/>
+</joint> 
+
+<link name="right_foot_roll"/>
+
+<joint name="right_foot_pitch" type="continuous">
+  <parent link="right_foot_roll"/>
+  <child link="right_foot_pitch"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 1.0 0"/>
+</joint> 
+
+<link name="right_foot_pitch"/>
+
+<joint name="right_foot_yaw" type="continuous">
+  <parent link="right_foot_pitch"/>
+  <child link="right_foot_yaw"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 0 1.0"/>
+</joint> 
+
+<link name="right_foot_yaw">
+  <visual>
+    <geometry>
+      <mesh filename="package://online_tempo/models/humanMeshed/meshes/rightFoot.dae" scale="0.06 0.06 0.06"/>
+    </geometry>
+    <origin rpy="0 0 1.57075" xyz="0.07375 0.055 -0.1075"/>    
+   </visual>
+ </link>
+
+<joint name="right_toe_roll" type="continuous">
+  <parent link="right_foot_yaw"/>
+  <child link="right_toe_roll"/>
+  <origin xyz="0.11 -0.0025 -0.07"/>
+  <axis xyz="1.0 0 0"/>
+</joint>
+
+<link name="right_toe_roll"/>
+
+<joint name="right_toe_pitch" type="continuous">
+  <parent link="right_toe_roll"/>
+  <child link="right_toe_pitch"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 1.0 0"/>
+</joint>
+
+<link name="right_toe_pitch"/>
+
+<joint name="right_toe_yaw" type="continuous">
+  <parent link="right_toe_pitch"/>
+  <child link="right_toe_yaw"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 0 1.0"/>
+</joint>
+
+<link name="right_toe_yaw"/>
+
+<!--   RIGHT FOOT ENDS HERE   -->
+<!--   LEFT THIGH STARTS HERE -->
+ <joint name="left_thigh_roll" type="continuous">
+    <parent link="hip_yaw"/>
+    <child link="left_thigh_roll"/>
+    <origin xyz="0 0.0875 0.0375"/>
+    <axis xyz="1.0 0 0"/>
+ </joint>
+
+ <link name="left_thigh_roll"/>
+
+ <joint name="left_thigh_pitch" type="continuous">
+    <parent link="left_thigh_roll"/>
+    <child link="left_thigh_pitch"/>
+    <origin xyz="0 0 0"/>
+    <axis xyz="0 1.0 0"/>
+ </joint>
+
+ <link name="left_thigh_pitch"/>
+
+ <joint name="left_thigh_yaw" type="continuous">
+    <parent link="left_thigh_pitch"/>
+    <child link="left_thigh_yaw"/>
+    <origin xyz="0 0 0"/>
+    <axis xyz="0 0 1.0"/>
+ </joint>
+
+<link name="left_thigh_yaw">
+  <visual>
+    <geometry>
+      <mesh filename="package://online_tempo/models/humanMeshed/meshes/leftThigh.dae" scale="0.06 0.06 0.06"/>
+    </geometry>      
+    <origin rpy="0 0 1.57075" xyz="0 -0.0875 -0.8725"/>    
+  </visual>
+</link>
+<!--     LEFT THIGH ENDS HERE -->
+<!--       LEFT KNEE STARTS HERE      -->
+<joint name="left_knee_roll" type="continuous">
+  <parent link="left_thigh_yaw"/>
+  <child link="left_knee_roll"/>
+  <origin xyz="-0.05 -0.02 -0.3375"/>
+  <axis xyz="1.0 0 0"/>
+</joint>
+
+<link name="left_knee_roll"/>
+
+<joint name="left_knee_pitch" type="continuous">
+  <parent link="left_knee_roll"/>
+  <child link="left_knee_pitch"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 1.0 0"/>
+</joint>
+
+<link name="left_knee_pitch"/>
+
+<joint name="left_knee_yaw" type="continuous">
+  <parent link="left_knee_pitch"/>
+  <child link="left_knee_yaw"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 0 1.0"/>
+</joint>
+
+<link name="left_knee_yaw">
+  <visual>
+    <geometry>
+      <mesh filename="package://online_tempo/models/humanMeshed/meshes/leftShin.dae" scale="0.06 0.06 0.06"/>
+    </geometry>      
+    <origin rpy="0 0 1.57075" xyz="0.05 -0.0675 -0.53"/>   
+  </visual>
+</link>
+<!--         left KNEE ENDS HERE   -->
+<!--         left FOOT STARTS HERE -->
+<joint name="left_foot_roll" type="continuous">
+  <parent link="left_knee_yaw"/>
+  <child link="left_foot_roll"/>
+  <origin xyz="-0.0225 -0.0125 -0.425"/>
+  <axis xyz="1.0 0 0"/>
+</joint> 
+
+<link name="left_foot_roll"/>
+
+<joint name="left_foot_pitch" type="continuous">
+  <parent link="left_foot_roll"/>
+  <child link="left_foot_pitch"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 1.0 0"/>
+</joint> 
+
+<link name="left_foot_pitch"/>
+
+<joint name="left_foot_yaw" type="continuous">
+  <parent link="left_foot_pitch"/>
+  <child link="left_foot_yaw"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 0 1.0"/>
+</joint> 
+
+<link name="left_foot_yaw">
+  <visual>
+    <geometry>
+      <mesh filename="package://online_tempo/models/humanMeshed/meshes/leftFoot.dae" scale="0.06 0.06 0.06"/>
+    </geometry>
+    <origin rpy="0 0 1.57075" xyz="0.07375 -0.055 -0.1075"/>    
+   </visual>
+</link>
+
+<joint name="left_toe_roll" type="continuous">
+  <parent link="left_foot_yaw"/>
+  <child link="left_toe_roll"/>
+  <origin xyz="0.11 0.0025 -0.07"/>
+  <axis xyz="1.0 0 0"/>
+</joint>
+
+<link name="left_toe_roll"/>
+
+<joint name="left_toe_pitch" type="continuous">
+  <parent link="left_toe_roll"/>
+  <child link="left_toe_pitch"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 1.0 0"/>
+</joint>
+
+<link name="left_toe_pitch"/>
+
+<joint name="left_toe_yaw" type="continuous">
+  <parent link="left_toe_pitch"/>
+  <child link="left_toe_yaw"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 0 1.0"/>
+</joint>
+
+<link name="left_toe_yaw"/>
+
+
+
+<!--   left FOOT ENDS HERE   -->
+<!--   lower_spine STARTS HERE   -->
+<joint name="lower_spine_roll" type="continuous">
+  <parent link="hip_yaw"/>
+  <child link="lower_spine_roll"/>
+  <origin xyz="0 0 0.025"/>
+  <axis xyz="1.0 0 0"/>
+</joint>
+
+<link name="lower_spine_roll"/>
+
+<joint name="lower_spine_pitch" type="continuous">
+  <parent link="lower_spine_roll"/>
+  <child link="lower_spine_pitch"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 1.0 0"/>
+</joint>
+
+<link name="lower_spine_pitch"/>
+
+<joint name="lower_spine_yaw" type="continuous">
+  <parent link="lower_spine_pitch"/>
+  <child link="lower_spine_yaw"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 0 1.0"/>
+</joint>
+
+
+<link name="lower_spine_yaw">
+  <visual>
+    <geometry>
+              <mesh filename="package://online_tempo/models/humanMeshed/meshes/abdomen.dae" scale="0.06 0.06 0.06"/>
+    </geometry>
+    <origin rpy="0 0 1.57075" xyz="-0.005 0 -1"/>    
+  </visual>
+</link>
+
+<!--  lower_spine ENDS HERE     -->
+<!--  middle_spine Starts here  -->
+<joint name="middle_spine_roll" type="continuous">
+  <parent link="lower_spine_yaw"/>
+  <child link="middle_spine_roll"/>
+  <origin xyz="0 0 0.08"/>
+  <axis xyz="1.0 0 0"/>
+</joint>
+
+<link name="middle_spine_roll"/>
+
+<joint name="middle_spine_pitch" type="continuous">
+  <parent link="middle_spine_roll"/>
+  <child link="middle_spine_pitch"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 1.0 0"/>
+</joint>
+
+<link name="middle_spine_pitch"/>
+
+<joint name="middle_spine_yaw" type="continuous">
+  <parent link="middle_spine_pitch"/>
+  <child link="middle_spine_yaw"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 0 1.0"/>
+</joint>
+
+<link name="middle_spine_yaw">
+  <!--
+  <visual>
+    <geometry>
+        <box size="0.10 0.25 0.08"/>
+    </geometry>
+    <origin rpy="0 0 0" xyz="0 0 0.04"/>    
+  </visual>
+-->
+</link>
+
+<!--  middle_spine Ends here    -->
+<!--  CHEST STARTS HERE     -->
+<joint name="chest_roll" type="continuous">
+  <parent link="middle_spine_yaw"/>
+  <child link="chest_roll"/>
+  <origin xyz="0 0 0.08"/>
+  <axis xyz="1.0 0 0"/>
+</joint>
+
+<link name="chest_roll"/>
+
+<joint name="chest_pitch" type="continuous">
+  <parent link="chest_roll"/>
+  <child link="chest_pitch"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 1.0 0"/>
+</joint>
+
+<link name="chest_pitch"/>
+
+<joint name="chest_yaw" type="continuous">
+  <parent link="chest_pitch"/>
+  <child link="chest_yaw"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 0 1.0"/>
+</joint>
+
+<link name="chest_yaw">
+  <visual>
+    <geometry>
+      <mesh filename="package://online_tempo/models/humanMeshed/meshes/chest.dae" scale="0.06 0.06 0.06"/>
+    </geometry>
+    <origin rpy="0 0 1.57075" xyz="0 0 -1.2"/>    
+  </visual>
+</link>
+<!--     Chest ends here            -->
+<!--     left clavicle starts here  -->
+<joint name="left_clavicle_roll" type="continuous">
+  <parent link="chest_yaw"/>
+  <child link="left_clavicle_roll"/>
+  <origin xyz="-0.04 0.0125 0.22"/>
+  <axis xyz="1.0 0 0"/>
+</joint>
+
+<link name="left_clavicle_roll"/>
+
+<joint name="left_clavicle_pitch" type="continuous">
+  <parent link="left_clavicle_roll"/>
+  <child link="left_clavicle_pitch"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 1.0 0"/>
+</joint>
+
+<link name="left_clavicle_pitch"/>
+
+<joint name="left_clavicle_yaw" type="continuous">
+  <parent link="left_clavicle_pitch"/>
+  <child link="left_clavicle_yaw"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 0 1.0"/>
+</joint>
+
+<link name="left_clavicle_yaw">
+  <visual>
+    <geometry>
+    <mesh filename="package://online_tempo/models/humanMeshed/meshes/leftClavicle.dae" scale="0.06 0.06 0.06"/>
+    </geometry>
+    <origin rpy="0 0 1.57075" xyz="0.04 0 -1.4"/>
+  </visual>
+</link>
+<!-- left clavicle ends here   -->
+<!-- left shoulder starts here -->
+<joint name="left_shoulder_roll" type="continuous">
+  <parent link="left_clavicle_yaw"/>
+  <child link="left_shoulder_roll"/>
+  <origin xyz="0 0.16 0.0225"/>
+  <axis xyz="1.0 0 0"/>
+</joint>
+
+<link name="left_shoulder_roll"/>
+
+<joint name="left_shoulder_pitch" type="continuous">
+  <parent link="left_shoulder_roll"/>
+  <child link="left_shoulder_pitch"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 1.0 0"/>
+</joint>
+
+<link name="left_shoulder_pitch"/>
+
+<joint name="left_shoulder_yaw" type="continuous">
+  <parent link="left_shoulder_pitch"/>
+  <child link="left_shoulder_yaw"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 0 1.0"/>
+</joint>
+
+<link name="left_shoulder_yaw">
+  <visual>
+    <geometry>
+      <mesh filename="package://online_tempo/models/humanMeshed/meshes/leftBicep.dae" scale="0.06 0.06 0.06"/> 
+    </geometry>
+    <origin rpy="0 0 1.57075 " xyz="0.04 -0.16 -1.42" />
+  </visual>
+</link>
+<!-- left shoulder ends here -->
+<!-- left elbow starts here -->
+<joint name="left_elbow_roll" type="continuous">
+  <parent link="left_shoulder_yaw"/>
+  <child link="left_elbow_roll"/>
+  <origin xyz="0 0.23 -0.095"/>
+  <axis xyz="1.0 0 0"/>
+</joint>
+
+<link name="left_elbow_roll"/>
+
+<joint name="left_elbow_pitch" type="continuous">
+  <parent link="left_elbow_roll"/>
+  <child link="left_elbow_pitch"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 1.0 0"/>
+</joint>
+
+<link name="left_elbow_pitch"/>
+
+<joint name="left_elbow_yaw" type="continuous">
+  <parent link="left_elbow_pitch"/>
+  <child link="left_elbow_yaw"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 0 1.0"/>
+</joint>
+
+<link name="left_elbow_yaw">
+  <visual>
+    <geometry>
+      <mesh filename="package://online_tempo/models/humanMeshed/meshes/leftForearm.dae" scale="0.06 0.06 0.06"/> 
+    </geometry>
+    <origin rpy="0 0 1.57075 " xyz="0.04 -0.4 -1.322" />
+  </visual>
+</link>
+<!-- left elbow ends here   -->
+<!-- left hand starts here  -->
+<joint name="left_hand_roll" type="continuous">
+  <parent link="left_elbow_yaw"/>
+  <child link="left_hand_roll"/>
+  <origin xyz="0.046 0.211 -0.04"/>
+  <axis xyz="1.0 0 0"/>
+</joint>
+
+<link name="left_hand_roll"/>
+
+<joint name="left_hand_pitch" type="continuous">
+  <parent link="left_hand_roll"/>
+  <child link="left_hand_pitch"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 1.0 0"/>
+</joint>
+
+<link name="left_hand_pitch"/>
+
+<joint name="left_hand_yaw" type="continuous">
+  <parent link="left_hand_pitch"/>
+  <child link="left_hand_yaw"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 0 1.0"/>
+</joint>
+
+<link name="left_hand_yaw">
+  <visual>
+    <geometry>
+      <mesh filename="package://online_tempo/models/humanMeshed/meshes/leftHand.dae" scale="0.06 0.06 0.06"/> 
+    </geometry>
+    <origin rpy="0 0 1.57075 " xyz="-0.0075 -0.61 -1.28" />
+  </visual>
+</link>
+<!-- left hand ends here    -->
+
+<joint name="right_clavicle_roll" type="continuous">
+  <parent link="chest_yaw"/>
+  <child link="right_clavicle_roll"/>
+  <origin xyz="-0.04 -0.0125 0.22"/>
+  <axis xyz="1.0 0 0"/>
+</joint>
+
+<link name="right_clavicle_roll"/>
+
+<joint name="right_clavicle_pitch" type="continuous">
+  <parent link="right_clavicle_roll"/>
+  <child link="right_clavicle_pitch"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 1.0 0"/>
+</joint>
+
+<link name="right_clavicle_pitch"/>
+
+<joint name="right_clavicle_yaw" type="continuous">
+  <parent link="right_clavicle_pitch"/>
+  <child link="right_clavicle_yaw"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 0 1.0"/>
+</joint>
+
+<link name="right_clavicle_yaw">
+  <visual>
+    <geometry>
+    <mesh filename="package://online_tempo/models/humanMeshed/meshes/rightClavicle.dae" scale="0.06 0.06 0.06"/>
+    </geometry>
+    <origin rpy="0 0 1.57075" xyz="0.04 0 -1.4"/>
+  </visual>
+</link>
+<!-- right clavicle ends here   -->
+<!-- right shoulder starts here -->
+<joint name="right_shoulder_roll" type="continuous">
+  <parent link="right_clavicle_yaw"/>
+  <child link="right_shoulder_roll"/>
+  <origin xyz="0 -0.16 0.0225"/>
+  <axis xyz="1.0 0 0"/>
+</joint>
+
+<link name="right_shoulder_roll"/>
+
+<joint name="right_shoulder_pitch" type="continuous">
+  <parent link="right_shoulder_roll"/>
+  <child link="right_shoulder_pitch"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 1.0 0"/>
+</joint>
+
+<link name="right_shoulder_pitch"/>
+
+<joint name="right_shoulder_yaw" type="continuous">
+  <parent link="right_shoulder_pitch"/>
+  <child link="right_shoulder_yaw"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 0 1.0"/>
+</joint>
+
+<link name="right_shoulder_yaw">
+  <visual>
+    <geometry>
+      <mesh filename="package://online_tempo/models/humanMeshed/meshes/rightBicep.dae" scale="0.06 0.06 0.06"/> 
+    </geometry>
+    <origin rpy="0 0 1.57075 " xyz="0.04 0.16 -1.42" />
+  </visual>
+</link>
+<!-- right shoulder ends here -->
+<!-- right elbow starts here -->
+<joint name="right_elbow_roll" type="continuous">
+  <parent link="right_shoulder_yaw"/>
+  <child link="right_elbow_roll"/>
+  <origin xyz="0 -0.23 -0.095"/>
+  <axis xyz="1.0 0 0"/>
+</joint>
+
+<link name="right_elbow_roll"/>
+
+<joint name="right_elbow_pitch" type="continuous">
+  <parent link="right_elbow_roll"/>
+  <child link="right_elbow_pitch"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 1.0 0"/>
+</joint>
+
+<link name="right_elbow_pitch"/>
+
+<joint name="right_elbow_yaw" type="continuous">
+  <parent link="right_elbow_pitch"/>
+  <child link="right_elbow_yaw"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 0 1.0"/>
+</joint>
+
+<link name="right_elbow_yaw">
+  <visual>
+    <geometry>
+      <mesh filename="package://online_tempo/models/humanMeshed/meshes/rightForearm.dae" scale="0.06 0.06 0.06"/> 
+    </geometry>
+    <origin rpy="0 0 1.57075 " xyz="0.04 0.4 -1.322" />
+  </visual>
+</link>
+<!-- right elbow ends here   -->
+<!-- right hand starts here  -->
+<joint name="right_hand_roll" type="continuous">
+  <parent link="right_elbow_yaw"/>
+  <child link="right_hand_roll"/>
+  <origin xyz="0.046 -0.211 -0.04"/>
+  <axis xyz="1.0 0 0"/>
+</joint>
+
+<link name="right_hand_roll"/>
+
+<joint name="right_hand_pitch" type="continuous">
+  <parent link="right_hand_roll"/>
+  <child link="right_hand_pitch"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 1.0 0"/>
+</joint>
+
+<link name="right_hand_pitch"/>
+
+<joint name="right_hand_yaw" type="continuous">
+  <parent link="right_hand_pitch"/>
+  <child link="right_hand_yaw"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 0 1.0"/>
+</joint>
+
+<link name="right_hand_yaw">
+  <visual>
+    <geometry>
+      <mesh filename="package://online_tempo/models/humanMeshed/meshes/rightHand.dae" scale="0.06 0.06 0.06"/> 
+    </geometry>
+    <origin rpy="0 0 1.57075 " xyz="-0.0075 0.61 -1.28" />
+  </visual>
+</link>
+<!-- right hand ends here    -->
+
+<!-- neck starts here   -->
+<joint name="neck_roll" type="continuous">
+  <parent link="chest_yaw"/>
+  <child link="neck_roll"/>
+  <origin xyz="0 0 0.25"/>
+  <axis xyz="1.0 0 0"/>
+</joint>
+
+<link name="neck_roll"/>
+
+<joint name="neck_pitch" type="continuous">
+  <parent link="neck_roll"/>
+  <child link="neck_pitch"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 1.0 0"/>
+</joint>
+
+<link name="neck_pitch"/>
+
+<joint name="neck_yaw" type="continuous">
+  <parent link="neck_pitch"/>
+  <child link="neck_yaw"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 0 1.0"/>
+</joint>
+
+<link name="neck_yaw">
+  <visual>
+    <geometry>
+      <mesh filename="package://online_tempo/models/humanMeshed/meshes/neck.dae" scale="0.06 0.06 0.06"/> 
+    </geometry>
+    <origin rpy="0 0 1.57075 " xyz="-0.0075 0 -1.45" />
+  </visual>
+</link>
+<!-- neck ends here -->
+<!-- head starts here -->
+<joint name="head_roll" type="continuous">
+  <parent link="neck_yaw"/>
+  <child link="head_roll"/>
+  <origin xyz="0 0 0.10"/>
+  <axis xyz="1.0 0 0"/>
+</joint>
+
+<link name="head_roll"/>
+
+<joint name="head_pitch" type="continuous">
+  <parent link="head_roll"/>
+  <child link="head_pitch"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 1.0 0"/>
+</joint>
+
+<link name="head_pitch"/>
+
+<joint name="head_yaw" type="continuous">
+  <parent link="head_pitch"/>
+  <child link="head_yaw"/>
+  <origin xyz="0 0 0"/>
+  <axis xyz="0 0 1.0"/>
+</joint>
+
+<link name="head_yaw">
+  <visual>
+    <geometry>
+      <mesh filename="package://online_tempo/models/humanMeshed/meshes/head.dae" scale="0.06 0.06 0.06"/> 
+    </geometry>
+    <origin rpy="0 0 1.57075 " xyz="-0.0075 0 -1.53" />
+  </visual>
+</link>
+<!-- head ends here -->
+</robot>
